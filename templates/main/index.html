@@ -1,11 +1,165 @@
+<!DOCTYPE html>
 <html>
     <head>
 	<title>NYCTaxiFinder.com</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script src="/static/js/jquery-ui-1.7.2.custom.min.js"></script>
+	<script src="/static/js/main.js"></script>
+	<script src="/static/js/yellow_cab.js"></script>
+	<link type='text/css' rel='STYLESHEET' href='/static/css/jquery-ui.css'/>
+	<link type='text/css' rel='STYLESHEET' href='/static/css/main.css'/>
     </head>
     <body bgcolor="black">
-	<div id="page-banner" align="center"><img src="/static/images/120509_taxibanner.gif"></img>
-	<div style='color:white'>
-	    We are currently undergoing some construction. Please check back soon.
+	<div id="page-banner" align="center"><img src="/static/images/120509_taxibanner.gif"/></div>
+	<table id="content" align="center">
+	    <tr>
+		<td>
+
+		<div id='yellowDialog' style='display: none;' align='center'>
+		    <div style='float: left'>
+			<img src='/static/images/cabTop.jpg'>
+		    </div>
+		    <div style='float:right'>
+			<img src='/static/images/cabFront.jpg'>
+		    </div>
+
+		    <div style='width: 30em; margin-top: 11em; margin-bottom: 2em; margin-left: auto; margin-right: auto;'>
+			<p style='text-align: justify;'>
+			    The medallion number is a combination of
+			    number-letter-number-number unique to each yellow cab in New York
+			    City. It can be found on the taxi receipt, the taxi license plate, on
+			    the roof of the taxi or inside the car on the back of the partition.
+			</p>
+		    </div>
+		</div>
+
+		<div id='info-frame'>
+		    <div id='tabs'>
+			<ul>
+			    <li><a href="#tabs-1">Yellow Cabs</a></li>
+			    <!--<li><a href="#tabs-4">Zip Code Search</a></li>
+			    <li><a href="#tabs-2">"Access-A-Ride"</a></li>
+			    <li><a href="#tabs-3">FHV Drivers</a></li>-->
+			    <li><a href="#tabs-about">About Us</a></li>
+			</ul>
+			<div id="tabs-1" style="margin-bottom: 2.5em; margin-top: 1.5em;">
+
+				<label>Medallion Number: </label>
+				<input type='text' id='licenseNumber' name='licenseNumber' value=''>
+				<input type='button' id='yellowCabSubmit' value='Search' data-event="yellow_cab.submit" /> - <span id='yellowTaxiHow'><a href='#'>Need help? Check this out</a></span>
+
+				<div class='taxi-accordion' style='margin: 1em 1em 4em;'>
+				    <h3 id='accordion-yellowType' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+				    <label><a href='#'>Base Details<span class='yellowMedContainer'></span></a></label>
+				</h3>
+				<div id='yellowTypeContainer' style='overflow:visible;'>
+				    &nbsp;
+				</div>
+
+				<h3 id='accordion-yellowDriver' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+				    <label><a href='#'>Driver Details<span class='yellowMedContainer'></span></a></label>
+				</h3>
+				<div id='yellowDriverContainer' style='overflow:visible;'>
+				    &nbsp;
+				</div>
+
+				<h3 id='accordion-yellowVehicle' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+				    <label><a href='#'>Vehicle Details<span class='yellowMedContainer'></span></a></label>
+				</h3>
+				<div id='yellowVehicleContainer' style='overflow:visible;'>
+				    &nbsp;
+				</div>
+		    </div>
+		</div>
+		
+		<!--
+		<div id='tabs-2' style='margin-top: 1.5em;'>
+		    <label>License Plate Number: </label>
+		    <input type='text' id='paraLicensePlate' name='paraLicensePlate' value=''>
+		    <input type='button' value='Search' id='paratransitSubmit'>
+
+		    <div class='taxi-accordion' style='margin: 1em 1em 4em;'>
+			<h3 id='accordion-paraBase' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+			    <label><a href='#'>Base Details<span class='paraLicenseContainer'></span></a></label>
+			</h3>
+			<div id='paraBaseContainer' style='overflow:visible;'>
+			    &nbsp;
+			</div>
+
+			<h3 id='accordion-paraVehicle' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+			    <label><a href='#'>Vehicle Details<span class='paraLicenseContainer'></span></a></label>
+			</h3>
+			<div id='paraVehicleContainer' style='overflow:visible;'>
+			    &nbsp;
+			</div>
+		    </div>
+		</div>
+
+		<div id='tabs-3' style='margin-top:1.5em'>
+		    <label>License Plate Number: </label>
+		    <input type='text' id='fhvLicensePlate' name='fhvLicensePlate' value=''>
+		    <input type='button' value='Search' id='fhvSubmit'>
+
+		    <div class='taxi-accordion' style='margin: 1em 1em 4em;'>
+			<h3 id='accordion-fhvBase' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+			    <label><a href='#'>Base Details<span class='fhvLicenseContainer'></span></a></label>
+	                </h3>
+	                <div id='fhvBaseContainer' style='overflow:visible;'>
+			    &nbsp;
+	                </div>
+
+	                <h3 id='accordion-fhvVehicle' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+	                    <label><a href='#'>Vehicle Details<span class='fhvLicenseContainer'></span></a></label>
+	                </h3>
+	                <div id='fhvVehicleContainer' style='overflow:visible;'>
+	                    &nbsp;
+	                </div>
+	            </div>
+		</div>
+	
+		<div id='tabs-4' style='margin-top:1.5em'>
+		    <label>Zip Code: </label>
+		    <input type='text' id='zipCode' name='zipCode' value=''>
+		    <input type='button' value='Search' id='zipSubmit'>
+		    <div id='zipCodeContainer' style='margin-bottom: 5em;'>
+
+		    </div>
+		</div>
+		-->
+		<div id='tabs-about' class='taxi-accordion' style='height: 15em; margin: 0em 1em;'>
+		    <h3 id='accordion-about' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+				<label><a href='#'>How to use this</a></label>
+		    </h3>
+			<div style='text-align:justify; margin-top: 1em; margin-left: auto; margin-right: auto'>
+			    NYCTaxifinder.com is a resource for detailed information about 
+			    vehicles licensed by the New York City Taxi and Limousine Commission. 
+			    All information provided on this site is publicly available 
+			    and NYCTaxifinder.com makes no warranty or any other claim 
+			    regarding the accuracy, validity or timeliness of the information 
+			    provided here. 
+			</div>
+
+			<h3 id='accordion-about' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>
+			    <label><a href='#'>Links</a></label>
+			</h3>
+			<div style='text-align:justify; margin-top: 1em; margin-left: auto; margin-right: auto'>
+			   Coming soon...
+			</div>
+	    </div>
 	</div>
-    </div>
+	</td>
+    </tr>
+    <tr>
+	<td align='center'>
+	    <div style='width:50%; margin-top: 1em;'>
+		<div class='ui-tabs-panel ui-widget-content'>
+		    <div style='margin: 1em 0em;'>
+			&copy; 2009-2013 NYCTaxifinder.com<br>
+			<a href="mailto:taxiadmin@nyctaxifinder.com">Contact Us - taxiadmin@nyctaxifinder.com</a>
+		    </div>
+		</div>
+	    </div>
+	</td>
+    </tr>
+    </table>	
 </html>
