@@ -62,99 +62,19 @@ $(document).ready(function() {
 
     manageAccordions();
     
-    // $('#yellowCabSubmit').click(function() {
-    //     var licenseNumberVal = ($('#licenseNumber').val().match(/^\d[A-Za-z]\d\d$/) != null) ? $('#licenseNumber').val() : '';
-    // 
-    //     $('.yellowMedContainer').html(' - ' + licenseNumberVal);
-    // 
-    //     $('#yellowTypeContainer').html(loadingHtml);
-    //     $('#yellowDriverContainer').html(loadingHtml);
-    //     $('#yellowVehicleContainer').html(loadingHtml);
-    //     $.get('yellowcab-query.php', { licenseNumber: licenseNumberVal },
-    //         function(data) {
-    //             expandContent($('#accordion-yellowType'));
-    //             expandContent($('#accordion-yellowDriver'));
-    // 
-    //             setTimeout(function() {
-    //                 var yellowData = eval('(' + data + ')');
-    //                 $('#yellowTypeContainer').html(yellowData.licenseType);
-    //                 $('#yellowDriverContainer').html(yellowData.drivers);
-    //                 $('#yellowVehicleContainer').html(yellowData.insurance);
-    //             }, 1000);
-    //         }
-    //     );
-    // });    
-
-    // $('#paratransitSubmit').click(function() {
-    // var licensePlateVal = ($('#paraLicensePlate').val().match(/^(T\d+C)|(\d+LA)|(AMBU\d+)$/) != null) ? $('#paraLicensePlate').val() : '';
-    // 
-    // $('.paraLicenseContainer').html(' - ' + licensePlateVal);
-    // 
-    // $('#paraBaseContainer').html(loadingHtml);
-    // $('#paraVehicleContainer').html(loadingHtml);
-    // $.get('paratransit-query.php', { licensePlate: licensePlateVal },
-    //     function(data) {
-    //         expandContent($('#accordion-paraBase'));
-    //         expandContent($('#accordion-paraVehicle'));
-    // 
-    //         setTimeout(function() {
-    //         var paraData = eval('(' + data + ')');
-    //         $('#paraBaseContainer').html(paraData.base);
-    //         $('#paraVehicleContainer').html(paraData.vehicle);
-    //         }, 1000);
-    //     });
-    // });
-
-    // $('#fhvSubmit').click(function() {
-    //     var licensePlateVal = $('#fhvLicensePlate').val();
-    // 
-    //     $('.fhvLicenseContainer').html(' - ' + licensePlateVal);
-    // 
-    //     $('#fhvBaseContainer').html(loadingHtml);
-    //     $('#fhvVehicleContainer').html(loadingHtml);
-    // 
-    //     $.get('fhv-query.php', { licensePlate: licensePlateVal },
-    //         function(data) {
-    //             expandContent($('#accordion-fhvBase'));
-    //             expandContent($('#accordion-fhvVehicle'));
-    // 
-    //             setTimeout(function() {
-    //                 var fhvData = eval('(' + data + ')');
-    //                 $('#fhvBaseContainer').html(fhvData.base);
-    //                 $('#fhvVehicleContainer').html(fhvData.vehicle);
-    //                 $('.fhvLicenseContainer').append(' - ' + fhvData.type);
-    //             }, 1000);
-    //         }
-    //     );
-    // });
-
-    // $('#zipSubmit').click(function() { 
-    //     var zipCodeVal = ($('#zipCode').val().match(/^\d\d\d\d\d$/) != null) ? $('#zipCode').val() : '';
-    // 
-    //     $('#zipCodeContainer').html(loadingHtml);
-    //     $.get('zip-query.php', { zipCode: zipCodeVal },
-    //         function (data) {
-    //             setTimeout(function() {
-    //                 $('#zipCodeContainer').html(data);
-    //                 manageAccordions();
-    //             }, 1000);
-    //         }
-    //     );
-    // });
-
     $('#licenseNumber').keyup(function(e) {
         if(e.keyCode == 13) { $('#yellowCabSubmit').click(); } 
     });
 
-    // $('#licensePlate').keyup(function(e) {
-    //     if(e.keyCode == 13) { $('#paratransitSubmit').click(); }
-    // });
-    // 
-    // $('#paraLicensePlate').keyup(function(e) {
-    //     if(e.keyCode == 13) { $('#paratransitSubmit').click(); }
-    // });
-    // 
-    // $('#zipCode').keyup(function(e) {
-    //     if(e.keyCode == 13) { $('#zipSubmit').click(); }
-    // });
+    $('#licensePlate').keyup(function(e) {
+         if(e.keyCode == 13) { $('#paratransitSubmit').click(); }
+    });
+    
+    $('#paraLicensePlate').keyup(function(e) {
+        if(e.keyCode == 13) { $('#paratransitSubmit').click(); }
+    });
+     
+    $('#zipCode').keyup(function(e) {
+        if(e.keyCode == 13) { $('#zipSubmit').click(); }
+    });
 });

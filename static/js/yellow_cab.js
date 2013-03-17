@@ -17,10 +17,12 @@ if (typeof yellow_cab == 'undefined') { yellow_cab = {}; }
 	$('#yellowBaseContainer').html(base_html);
 	$('#yellowDriverContainer').html(driver_html);
 	$('#yellowVehicleContainer').html(vehicle_html);
+
+	expandContent('#accordion-yellowType');
+	expandContent('#accordion-yellowDriver');
+	expandContent('#accordion-yellowVehicle');
 	
-	$('#accordion-yellowType').click();
-	$('#accordion-yellowDriver').click();
-	$('#accordion-yellowVehicle').click();
+	setTimeout(function() { $('#yellowSearching').slideUp('slow') }, 400);
     };
     
     yellow_cab.submit = function() {
@@ -28,6 +30,7 @@ if (typeof yellow_cab == 'undefined') { yellow_cab = {}; }
 	var hack_pattern = /^\d[A-Za-z]\d\d$/g;
 	if (!hack) { alert('You must enter a medallion number to search for.'); return; }
 	if (!hack_pattern.test(hack)) { alert('You must enter a valid medallion number to search for: i.e. 1A11'); return; }
+	$('#yellowSearching').slideDown('slow');
         $.ajax({
             url: '/yellow_cab/search/'+encodeURIComponent(hack),
             success: yellow_cab.success,
