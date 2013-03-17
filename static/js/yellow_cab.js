@@ -1,12 +1,37 @@
 if (typeof yellow_cab == 'undefined') { yellow_cab = {}; }
-(function(document){
-    yellow_cab.success = function(data) { console.log(data); };
+(function(document) {
+    var base_source = $('#yellow-base-details').html();
+    var base_template = Handlebars.compile(base_source);
+
+    var driver_source = $('#yellow-driver-details').html();
+    var driver_template = Handlebars.compile(driver_source);
+
+    var vehicle_source = $('#yellow-vehicle-details').html();
+    var vehicle_template = Handlebars.compile(vehicle_source);
+
+    yellow_cab.success = function(data) {
+	var base_html = base_template({base_details: data.base_details});
+	var driver_html = driver_template({driver_details: data.driver_details});
+	var vehicle_html = vehicle_template({vehicle_details: data.vehicle_details});
+
+	$('#yellowBaseContainer').html(base_html);
+	$('#yellowDriverContainer').html(driver_html);
+	$('#yellowVehicleContainer').html(vehicle_html);
+	
+	$('#accordion-yellowType').click();
+	$('#accordion-yellowDriver').click();
+	$('#accordion-yellowVehicle').click();
+    };
     
     yellow_cab.submit = function() {
-        var hack = $('#licenseNumber').val();
+	var hack = $('#licenseNumber').val();
+	var hack_pattern = /^\d[A-Za-z]\d\d$/g;
+	if (!hack) { alert('You must enter a medallion number to search for.'); return; }
+	if (!hack_pattern.test(hack)) { alert('You must enter a valid medallion number to search for: i.e. 1A11'); return; }
         $.ajax({
-            url: '/yellow_cab/search/'+hack,
+            url: '/yellow_cab/search/'+encodeURIComponent(hack),
             success: yellow_cab.success,
+	    dataType: 'json',
             error: generic_ajax_error
         });
     };

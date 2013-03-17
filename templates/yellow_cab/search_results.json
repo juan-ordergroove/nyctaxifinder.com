@@ -1,0 +1,29 @@
+{
+    base_details: [{% for base in base_details %}
+	{
+	    name: "{{ base.licensee_name|escapejs }}",
+	    address: "{{ base.address|escapejs }}",
+	    telephone: "{{ base.telephone|escapejs }}",
+	    type: "{{ base.license_type|escapejs }}"
+	}{% if not forloop.last %},{% endif %}
+	{% endfor %}
+    ],
+    driver_details: [{% for driver in driver_details %}
+	{
+	    name: "{{ driver.name|escapejs }}",
+	    expiration: "{{ driver.expiration|escapejs }}"
+	}{% if not forloop.last %},{% endif %}
+	{% endfor %}
+    ],
+    vehicle_details: [{% for vehicle in vehicle_details %}
+	{
+	    owner: "{{ vehicle.owner|escapejs }}",
+	    insurance_code: "{{ vehicle.insurance_code|escapejs }}",
+	    insurance_policy_number: "{{ verhicle.insurance_policy_number|escapejs }}",
+	    vin: "{{ vehicle.vin|escapejs }}",
+	    type: "{{ vehicle.type|escapejs }}",
+	    year: "{{ vehicle.year|escapejs }}"
+	}{% if not forloop.last %},{% endif %}
+	{% endfor %}
+    ]
+}

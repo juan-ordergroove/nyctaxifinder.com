@@ -14,10 +14,6 @@ body, td {
     margin: 0.5em;
     display: block;
 }
-					        
-.taxi-accordion div {
-    margin: 1em;
-    }
 
 .taxi-accordion td {
     font-family: Arial,Helvetica,Verdana,sans-serif;
@@ -27,7 +23,28 @@ body, td {
 
 /* Remove margins from the 'html' and 'body' tags, and ensure the page takes up full screen height */
 html, body {
-        height:100%; 
+    height:100%; 
     margin:0; 
     padding:0;
 }
+
+.clear {clear:both;}
+
+div.yellowTable { 
+    overflow:visible; 
+    padding: 5px 0px 40px 8px;
+}
+
+div.yellowTable div span {
+    border: 1px solid white;
+    padding: 0;
+    display:block;
+    float:left;
+    padding: 10px 0;
+    text-align:center;
+    height: 10px;
+}
+
+div#yellowBaseContainer div span { width: 24%; }
+div#yellowDriverContainer div span {width: 49%; }
+div#yellowVehicleContainer div span { width: 16%; } 
