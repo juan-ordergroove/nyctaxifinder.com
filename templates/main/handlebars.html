@@ -1,0 +1,26 @@
+<script id='yellow-base-details' type='text/x-handlebars-template'>
+    <div>
+	<span>Name</span><span>Address</span><span>Telephone</span><span>Type</span>
+    </div>
+    {% verbatim %}{{#each base_details}}<div class=clear> 
+	<span>{{this.name}}</span><span>{{this.address}}</span><span>{{this.telephone}}</span><span>{{this.type}}</span>
+    </div>{{/each}}{% endverbatim %}
+</script>
+
+<script id='yellow-driver-details' type='text/x-handlebars-template'>
+    <div>
+	<span>Name</span><span>Expiration</span>
+    </div>
+    {% verbatim %}{{#each driver_details}}<div class=clear>
+	<span>{{this.name}}</span><span>{{this.expiration}}</span>
+    </div>{{/each}}{% endverbatim %}
+</script>
+
+<script id='yellow-vehicle-details' type='text/x-handlebars-template'>
+    <div>
+	<span>Owner</span><span>Insurance Code</span><span>Policy Number</span><span>VIN</span><span>Type</span><span>Model</span>
+    </div>
+    {% verbatim %}{{#each vehicle_details}}<div class=clear>
+	<span>{{this.owner}}</span><span>{{this.insurance_code}}</span><span>{{this.insurance_policy_number}}</span><span>{{this.vin}}</span><span>{{this.type}}</span><span>{{this.year}}</span>
+    </div>{{/each}}{% endverbatim %}
+</script>

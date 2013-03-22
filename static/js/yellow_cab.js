@@ -32,7 +32,7 @@ if (typeof yellow_cab == 'undefined') { yellow_cab = {}; }
 	if (!hack_pattern.test(hack)) { alert('You must enter a valid medallion number to search for: i.e. 1A11'); return; }
 	$('#yellowSearching').slideDown('slow');
         $.ajax({
-            url: '/yellow_cab/search/'+encodeURIComponent(hack),
+            url: '/yellow_cab/search/'+encodeURIComponent(hack).toUpperCase(),
             success: yellow_cab.success,
 	    dataType: 'json',
             error: generic_ajax_error

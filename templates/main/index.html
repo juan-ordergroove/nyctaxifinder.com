@@ -2,40 +2,8 @@
 <html>
     <head>
 	<title>NYCTaxiFinder.com</title>
-        <script id='yellow-base-details' type='text/x-handlebars-template'>
-	    <div>
-		<span>Name</span><span>Address</span><span>Telephone</span><span>Type</span>
-	    </div>
-	    {% verbatim %}{{#each base_details}}<div class=clear> 
-		<span>{{this.name}}</span><span>{{this.address}}</span><span>{{this.telephone}}</span><span>{{this.type}}</span>
-	    </div>{{/each}}{% endverbatim %}
-	</script>
-
-	<script id='yellow-driver-details' type='text/x-handlebars-template'>
-	    <div>
-		<span>Name</span><span>Expiration</span>
-	    </div>
-	    {% verbatim %}{{#each driver_details}}<div class=clear>
-		<span>{{this.name}}</span><span>{{this.expiration}}</span>
-	    </div>{{/each}}{% endverbatim %}
-	</script>
-
-	<script id='yellow-vehicle-details' type='text/x-handlebars-template'>
-	    <div>
-		<span>Owner</span><span>Insurance Code</span><span>Policy Number</span><span>VIN</span><span>Type</span><span>Model</span>
-	    </div>
-	    {% verbatim %}{{#each vehicle_details}}<div class=clear>
-		<span>{{this.owner}}</span><span>{{this.insurance_code}}</span><span>{{this.insurance_policy_number}}</span><span>{{this.vin}}</span><span>{{this.type}}</span><span>{{this.year}}</span>
-	    </div>{{/each}}{% endverbatim %}
-	</script>
-
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-	<script src="/static/js/jquery-ui-1.7.2.custom.min.js"></script>
-	<script src="/static/js/lib/handlebars.js"></script>
-	<script src="/static/js/main.js"></script>
-	<script src="/static/js/yellow_cab.js"></script>
-	<link type='text/css' rel='STYLESHEET' href='/static/css/jquery-ui.css'/>
-	<link type='text/css' rel='STYLESHEET' href='/static/css/main.css'/>
+	{% include "main/handlebars.html" %}
+	{% include "main/head.html" %}
     </head>
     <body bgcolor="black">
 	<div id="page-banner" align="center"><img src="/static/images/120509_taxibanner.gif"/></div>
