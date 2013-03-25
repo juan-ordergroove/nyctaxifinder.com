@@ -1,0 +1,50 @@
+{
+    yellow_cabs: [{% for cab in yellow_cabs %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.state|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ],
+    paratransit: [{% for cab in ptcabs %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ],
+    commuter_vans: [{% for cab in commuter_vans %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ],
+    community_cars: [{% for cab in community_cars %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ],
+    black_cars: [{% for cab in black_cars %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ],
+    limos: [{% for cab in limos %}
+	{
+	    license_number: "{{ cab.license_number|escapejs }}",
+	    licensee_name: "{{ cab.licensee_name|escapejs }}",
+	    address: "{{ cab.address|escapejs }} {{ cab.city|escapejs }} {{ cab.zip }}",
+	    telephone: "{{ cab.telephone|escapejs }}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+    ]
+}

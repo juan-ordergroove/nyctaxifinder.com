@@ -1,7 +1,7 @@
-    import csv
+import csv
 from yellow_cab.models import *
 Medallion.objects.all()
-f = open('/opt/pythonenv/nyctaxifinder-env/yellowcabmedallion.csv', 'rb')
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/yellowcabmedallion.csv', 'rb')
 csv_r = csv.reader(f)
 for row in csv_r:
  print 'Saving '+', '.join(row)
@@ -23,7 +23,7 @@ f.close()
 
 import csv
 from yellow_cab.models import MedallionLicenseType
-f = open('/opt/pythonenv/nyctaxifinder-env/yellowcabmedallionlicensetype.csv', 'rb')
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/yellowcabmedallionlicensetype.csv', 'rb')
 csv_r = csv.reader(f)
 for row in csv_r:
  print 'Saving '+', '.join(row)
@@ -45,7 +45,7 @@ f.close()
 
 import csv
 from yellow_cab.models import Insurance
-f = open('/opt/pythonenv/nyctaxifinder-env/insurance.csv', 'rb')
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/insurance.csv', 'rb')
 csv_r = csv.reader(f)
 for row in csv_r:
  print 'Saving '+', '.join(row)
@@ -66,7 +66,7 @@ f.close()
 
 import csv
 from yellow_cab.models import DriversByMedallion
-f = open('/opt/pythonenv/nyctaxifinder-env/driversbymedallion.csv', 'rb')
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/driversbymedallion.csv', 'rb')
 csv_r = csv.reader(f)
 for row in csv_r:
  print 'Saving '+', '.join(row)
@@ -79,3 +79,111 @@ for row in csv_r:
   ).save(safe=True)
 
 f.close()
+
+
+---
+
+import csv
+from paratransit.models import ParatransitBase
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/paratransitbase.csv', 'rb')
+csv_r = csv.reader(f)
+for row in csv_r:
+ print 'Saving '+', '.join(row)
+ ParatransitBase(
+  license_number=row[1]
+  , licensee_name=row[2]
+  , alt_licensee_name=row[3]
+  , address=row[4]
+  , city=row[5]
+  , zip=row[6]
+  , telephone=row[7]
+  , license_type=row[8]
+  ).save(safe=True)
+
+f.close()
+
+---
+
+import csv
+from commuter_van.models import CommuterVanBase
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/commutervanbase.csv', 'rb')
+csv_r = csv.reader(f)
+for row in csv_r:
+ print 'Saving '+', '.join(row)
+ CommuterVanBase(
+  license_number=row[1]
+  , licensee_name=row[2]
+  , alt_licensee_name=row[3]
+  , address=row[4]
+  , city=row[5]
+  , zip=row[6]
+  , telephone=row[7]
+  , license_type=row[8]
+  ).save(safe=True)
+
+f.close()
+
+---
+
+import csv
+from black_car.models import BlackCarBase
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/blackcarbase.csv', 'rb')
+csv_r = csv.reader(f)
+for row in csv_r:
+ print 'Saving '+', '.join(row)
+ BlackCarBase(
+  license_number=row[1]
+  , licensee_name=row[2]
+  , alt_licensee_name=row[3]
+  , address=row[4]
+  , city=row[5]
+  , zip=row[6]
+  , telephone=row[7]
+  , license_type=row[8]
+  ).save(safe=True)
+
+f.close()
+
+---
+
+import csv
+from limo.models import LimoBase
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/limobase.csv', 'rb')
+csv_r = csv.reader(f)
+for row in csv_r:
+ print 'Saving '+', '.join(row)
+ LimoBase(
+  license_number=row[1]
+  , licensee_name=row[2]
+  , alt_licensee_name=row[3]
+  , address=row[4]
+  , city=row[5]
+  , zip=row[6]
+  , telephone=row[7]
+  , license_type=row[8]
+  ).save(safe=True)
+
+f.close()
+
+---
+
+import csv
+from community_car.models import CommunityCarBase
+f = open('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/data_kickstart/communitycarbase.csv', 'rb')
+csv_r = csv.reader(f)
+for row in csv_r:
+ print 'Saving '+', '.join(row)
+ CommunityCarBase(
+  license_number=row[1]
+  , licensee_name=row[2]
+  , alt_licensee_name=row[3]
+  , address=row[4]
+  , city=row[5]
+  , zip=row[6]
+  , telephone=row[7]
+  , license_type=row[8]
+  ).save(safe=True)
+
+f.close()
+
+
