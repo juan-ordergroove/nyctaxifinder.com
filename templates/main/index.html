@@ -111,10 +111,9 @@
 		<div id='tabs-4' style='margin-top:1.5em'>
 		    <label>Zip Code: </label>
 		    <input type='text' id='zipCode' name='zipCode' value=''>
-		    <input type='button' value='Search' id='zipSubmit'>
-		    <div id='zipCodeContainer' style='margin-bottom: 5em;'>
-
-		    </div>
+		    <input type='button' value='Search' id='zipSubmit' data-event="zipsearch.submit">
+		    <div id='zipSearching' style=display:none;>Searching...</div>
+		    <div id='zipCodeContainer' class=zipTable></div>
 		</div>
 		<div id='tabs-about' class='taxi-accordion' style='height: 15em; margin: 0em 1em;'>
 		    <h3 id='accordion-about' class='ui-accordion-header ui-helper-reset ui-state-default ui-corner-all' role='tab' aria-expanded='false' tabindex='-1'>

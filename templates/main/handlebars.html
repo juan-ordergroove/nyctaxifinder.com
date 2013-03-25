@@ -24,3 +24,15 @@
 	<span>{{this.owner}}</span><span>{{this.insurance_code}}</span><span>{{this.insurance_policy_number}}</span><span>{{this.vin}}</span><span>{{this.type}}</span><span>{{this.year}}</span>
     </div>{{/each}}{% endverbatim %}
 </script>
+
+<script id='zip-headers' type='text/x-handlebars-template'>
+    <div>
+        <span>Vehicle Type</span><span>License Number</span><span>Licensee Name</span><span>Address</span><span>Telephone</span>
+    </div>
+</script>
+
+<script id='zip-details' type='text/x-handlebars-template'>
+    {% verbatim %}{{#each zip_details}}<div class=clear>
+	<span>{{../vtype}}</span><span>{{this.license_number}}</span><span>{{this.licensee_name}}</span><span>{{this.address}}</span><span>{{this.telephone}}</span>
+    </div>{{/each}}{% endverbatim %}
+</script>
