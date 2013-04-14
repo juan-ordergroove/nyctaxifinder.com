@@ -13,7 +13,11 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-import os
+import os, sys, site
+
+site.addsitedir('/opt/pythonenv/nyctaxifinder-env/lib/python2.7/site-packages/')
+sys.path.append('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com')
+sys.path.append('/opt/pythonenv/nyctaxifinder-env/nyctaxifinder.com/nyctaxifinder')
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use

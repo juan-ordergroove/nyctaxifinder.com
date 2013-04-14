@@ -2,7 +2,7 @@
 
 # Replace these three settings.
 PROJDIR="/var/run/nyctaxifinder.com"
-PIDFILE="$PROJDIR/juanngy.com.pid"
+PIDFILE="$PROJDIR/nyctaxifinder.com.pid"
 #SOCKET="$PROJDIR/nyctaxifinder.com.sock"
 
 cd $PROJDIR
